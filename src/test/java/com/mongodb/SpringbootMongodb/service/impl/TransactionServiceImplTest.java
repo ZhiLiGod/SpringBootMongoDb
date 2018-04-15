@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mongodb.SpringbootMongodb.Model.Account;
@@ -35,7 +37,7 @@ public class TransactionServiceImplTest {
 		String displayName = "Michael Barry Brennan";
 		Account acc = accountServiceImpl.queryByDisplayName(displayName);
 		List<Transaction> allTrans = transactionServiceImpl.queryByAccount(acc.get_id());
-		List<Transaction> transaction = transactionServiceImpl.queryByAccountAndPage(acc.get_id(), page, rows);
+		List<Transaction> transaction = transactionServiceImpl.queryByAccountAndPage(acc.get_id(), page, rows, Direction.ASC);
 		List<Transaction> transByDeal = transactionServiceImpl.queryByDeal(deal);
 		
 		System.out.println("Account is: " + acc.toString() + "Id is: " + acc.get_id());

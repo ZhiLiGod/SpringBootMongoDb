@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.SpringbootMongodb.Model.Transaction;
@@ -25,8 +26,8 @@ public class TransactionServiceImpl implements ITransactionService {
 	}
 
 	@Override
-	public List<Transaction> queryByAccountAndPage(ObjectId account, int page, int rows) throws Exception {
-		PageRequest pageRequest = new PageRequest(page - 1, rows); // mongo starts from 0
+	public List<Transaction> queryByAccountAndPage(ObjectId account, int page, int rows, Direction direction) throws Exception {
+		PageRequest pageRequest = new PageRequest(page - 1, rows, direction, "_id"); // mongo starts from 0
 		// Page<Transaction> pages = transactionRespository.findByAccount(account, pageRequest);
 		return transactionRespository.findByAccount(account, pageRequest).getContent();
 	}
