@@ -3,6 +3,7 @@ package com.mongodb.SpringbootMongodb.Model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,19 +13,19 @@ public class Transaction implements Serializable {
 	private static final long serialVersionUID = -1204368933579373172L;
 	
 	@Id
-	private String _id;
+	private ObjectId _id;
 	private String description;
 	private String currency;
-	private String account;
+	private ObjectId account;
 	private Integer deal;
 	private String state;
 	private Double amount;
 	private LocalDateTime date;
 	private String type;
-	public String get_id() {
+	public ObjectId get_id() {
 		return _id;
 	}
-	public void set_id(String _id) {
+	public void set_id(ObjectId _id) {
 		this._id = _id;
 	}
 	public String getDescription() {
@@ -39,10 +40,10 @@ public class Transaction implements Serializable {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public String getAccount() {
+	public ObjectId getAccount() {
 		return account;
 	}
-	public void setAccount(String account) {
+	public void setAccount(ObjectId account) {
 		this.account = account;
 	}
 	public Integer getDeal() {
@@ -77,7 +78,7 @@ public class Transaction implements Serializable {
 	}
 	
 	@PersistenceConstructor
-	public Transaction(String _id, String description, String currency, String account, Integer deal, String state,
+	public Transaction(ObjectId _id, String description, String currency, ObjectId account, Integer deal, String state,
 			Double amount, LocalDateTime date, String type) {
 		this._id = _id;
 		this.description = description;

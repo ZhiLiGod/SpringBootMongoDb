@@ -20,13 +20,16 @@ public class TransactionRespositoryTest {
 	private TransactionRespository transactionRespository;
 	
 	@Test
-	public void testFindAll() {
+	public void testFindAll() throws Exception {
 		System.out.println("************************************************************");
         System.out.println("Start Testing");
         System.out.println("************************************************************");
         
         List<Transaction> transaction = transactionRespository.findAll();
         System.out.println("The length is: " + transaction.size());
+        
+        List<Transaction> appliedTransactions = transactionRespository.findByState("pending");
+        System.out.println("The length is: " + appliedTransactions.size());
         
         System.out.println("************************************************************");
         System.out.println("End Testing");
