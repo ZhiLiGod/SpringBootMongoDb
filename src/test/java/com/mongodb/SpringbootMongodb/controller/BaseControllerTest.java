@@ -29,8 +29,6 @@ public abstract class BaseControllerTest {
 	
 	MockMvc mockMvc;
 	
-	private HttpMessageConverter<?> mappingJackson2HttpMessageConverter;
-	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
@@ -38,16 +36,4 @@ public abstract class BaseControllerTest {
 	public void setup() throws Exception {
 	    this.mockMvc = webAppContextSetup(webApplicationContext).build();
 	}
-	
-	@Autowired
-	void setConverters(HttpMessageConverter<?>[] converters) {
-	    /* @formatter:off */
-	    this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
-	      .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
-	      .findAny()
-	      .orElse(null);
-	    /* @formatter:on */
-	
-	    assertNotNull("the JSON message converter must not be null", this.mappingJackson2HttpMessageConverter);
-	 }
 }
