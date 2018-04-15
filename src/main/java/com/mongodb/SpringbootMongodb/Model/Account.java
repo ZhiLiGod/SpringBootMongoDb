@@ -1,10 +1,14 @@
 package com.mongodb.SpringbootMongodb.Model;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "accounts")
-public class Account {
+public class Account implements Serializable {
+	private static final long serialVersionUID = 6141258223022498435L;
+
 	@Id
 	private String _id;
 
@@ -34,6 +38,11 @@ public class Account {
 
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [_id=" + _id + ", reference=" + reference + ", displayName=" + displayName + "]";
 	}
 	
 	

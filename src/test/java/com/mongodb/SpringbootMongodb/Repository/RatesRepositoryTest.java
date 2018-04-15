@@ -10,13 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mongodb.SpringbootMongodb.Model.Account;
+import com.mongodb.SpringbootMongodb.Model.Rate;
+import com.mongodb.SpringbootMongodb.Model.Rates;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AccountRepositoryTest {
+public class RatesRepositoryTest {
 	@Autowired
-	private AccountRepository accountRepostory;
+	private RatesRepository ratesRepository;
 	
 	@Test
 	public void testFindAll() {
@@ -24,11 +25,16 @@ public class AccountRepositoryTest {
         System.out.println("Start Testing");
         System.out.println("************************************************************");
         
-        List<Account> accounts = accountRepostory.findAll();
+        List<Rates> rates = ratesRepository.findAll();
         
-        for(Account acc : accounts) {
-        	System.out.println(acc.toString());
-        }
+//        for(Rates rate : rates) {
+//        	System.out.println(rate.toString());
+//        }
+//        
+//        for(Rate rate : rates.get(0).getRate()) {
+//        	System.out.println(rate.toString());
+//        }
+        System.out.println(rates.get(0));
         
         System.out.println("************************************************************");
         System.out.println("End Testing");
