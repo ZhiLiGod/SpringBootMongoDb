@@ -1,4 +1,1 @@
-mongodb:
-	host: localhost
-	port: 27017
-	database: accounts
+spring.data.mongodb.uri: mongodb://invoicefair:4WTXCT76edwRTi@localhost:27020/banking2?authSource=admin
